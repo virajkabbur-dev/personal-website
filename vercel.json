@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install",
+  "buildCommand": "",
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/public/assets/favicon.png",
+      "statusCode": 307
+    }
+  ],
+  "headers": [
+    {
+      "source": "/public/assets/favicon.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

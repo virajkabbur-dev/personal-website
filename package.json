@@ -2,8 +2,7 @@
   "name": "personal-website",
   "private": true,
   "scripts": {
-    "dev": "serve .",
-    "start": "serve ."
+    "dev": "serve ."
   },
   "devDependencies": {
     "serve": "^14.2.4"
