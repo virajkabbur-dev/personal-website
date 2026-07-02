@@ -1,0 +1,551 @@
+/* Profession page — intro animation + main content */
+
+html:has(body.profession-page) {
+  scrollbar-width: thin;
+  scrollbar-color: #c4b0dc transparent;
+}
+
+html:has(body.profession-page)::-webkit-scrollbar {
+  width: 6px;
+}
+
+html:has(body.profession-page)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html:has(body.profession-page)::-webkit-scrollbar-thumb {
+  background-color: #c4b0dc;
+  border-radius: 999px;
+}
+
+html:has(body.profession-page)::-webkit-scrollbar-thumb:hover {
+  background-color: #b39dcc;
+}
+
+[data-theme="dark"] html:has(body.profession-page) {
+  scrollbar-color: #7a6a9a transparent;
+}
+
+[data-theme="dark"] html:has(body.profession-page)::-webkit-scrollbar-thumb {
+  background-color: #7a6a9a;
+}
+
+[data-theme="dark"] html:has(body.profession-page)::-webkit-scrollbar-thumb:hover {
+  background-color: #8f7fb0;
+}
+
+body.profession-page {
+  overflow-x: hidden;
+  --profession-section-gap: clamp(100px, 14vh, 160px);
+  --profession-page-top: clamp(72px, 10vh, 96px);
+}
+
+html:has(body.profession-page--animating),
+body.profession-page--animating {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.profession-page .nav {
+  display: none;
+}
+
+.profession-page .footer {
+  display: none;
+}
+
+.profession-page .profession-design__footer {
+  display: block;
+  position: relative;
+  bottom: auto;
+  padding: 32px 0 28px;
+}
+
+/* Intro — GSAP drives position/scale */
+.profession-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.profession-intro__text {
+  width: max-content;
+  max-width: calc(100vw - 48px);
+  font-size: clamp(42px, 6.5vw, 64px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-align: left;
+  white-space: normal;
+  color: var(--text);
+}
+
+.profession-page--ready .profession-intro__text {
+  color: var(--text-muted);
+}
+
+.profession-intro__char {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+.profession-intro__strike {
+  display: inline-block;
+  text-decoration: line-through;
+  text-decoration-thickness: 2.5px;
+  text-decoration-color: currentColor;
+}
+
+/* Main content — venn section */
+.profession-content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--profession-page-top) 24px 0;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  visibility: hidden;
+}
+
+.profession-content__header {
+  flex-shrink: 0;
+}
+
+.profession-content__title {
+  font-size: clamp(30px, 3.8vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.profession-content__desc {
+  font-size: clamp(15px, 1.6vw, 17px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.profession-content__diagram-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 5vh, 56px) 0;
+}
+
+.profession-content__diagram {
+  display: block;
+  width: 100%;
+  max-width: min(700px, 90vw);
+  max-height: min(52vh, 480px);
+  height: auto;
+  object-fit: contain;
+}
+
+.profession-content__tagline {
+  flex-shrink: 0;
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+}
+
+/* Technology text section */
+.profession-reveal {
+  position: relative;
+}
+
+.profession-reveal__pin {
+  padding: var(--profession-section-gap) 24px 0;
+}
+
+.profession-reveal > .profession-projects {
+  padding-top: var(--profession-section-gap);
+  padding-bottom: 0;
+}
+
+.profession-reveal__inner {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.profession-reveal__title {
+  font-size: clamp(30px, 3.8vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  color: var(--text);
+  text-align: center;
+}
+
+.profession-reveal__text {
+  font-size: clamp(18px, 2.1vw, 22px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.profession-reveal__word {
+  opacity: 0.18;
+}
+
+.profession-reveal--ready .profession-reveal__word {
+  opacity: 1;
+}
+
+.profession-reveal__pin--locked {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: var(--profession-section-gap) 24px 0;
+}
+
+.profession-reveal__placeholder {
+  pointer-events: none;
+}
+
+/* Project cards carousel */
+.profession-projects {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--profession-section-gap) 24px 0;
+}
+
+.profession-projects--business {
+  padding-bottom: var(--profession-section-gap);
+}
+
+.profession-projects__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.profession-projects__nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profession-projects__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1.5px solid var(--text);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.profession-projects__btn:hover {
+  opacity: 0.7;
+}
+
+.profession-projects__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.profession-projects__viewport {
+  overflow: hidden;
+}
+
+.profession-projects__track {
+  display: flex;
+  gap: clamp(20px, 3vw, 28px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.profession-projects__track::-webkit-scrollbar {
+  display: none;
+}
+
+.profession-project-card {
+  flex: 0 0 min(460px, 86vw);
+  scroll-snap-align: start;
+  padding: clamp(28px, 4vw, 40px);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fde8d4 0%, #f5c9a2 55%, #efbc8f 100%);
+  display: flex;
+  flex-direction: column;
+  will-change: opacity;
+}
+
+.profession-project-card--wide {
+  flex: 0 0 min(580px, 92vw);
+}
+
+[data-theme="dark"] .profession-project-card {
+  background: linear-gradient(180deg, #3d3228 0%, #4a3a2e 55%, #5c4535 100%);
+}
+
+.profession-projects--business .profession-project-card {
+  background: linear-gradient(180deg, #d4f8cc 0%, #9bf789 55%, #8fce86 100%);
+}
+
+[data-theme="dark"] .profession-projects--business .profession-project-card {
+  background: linear-gradient(180deg, #2a3528 0%, #1f4a1c 55%, #1a5c14 100%);
+}
+
+.profession-project-card__title {
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.profession-project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.profession-project-card__tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 500;
+  line-height: 1.3;
+  color: #2a2a2a;
+  white-space: nowrap;
+}
+
+.profession-project-card__tag--stack {
+  background: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+[data-theme="dark"] .profession-project-card__tag {
+  background: rgba(0, 0, 0, 0.28);
+  color: #f2f2f4;
+}
+
+[data-theme="dark"] .profession-project-card__tag--stack {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.profession-project-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(180px, 28vw, 240px);
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .profession-project-card__image {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.profession-project-card__image-placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.profession-project-card__desc {
+  flex: 1;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: justify;
+  hyphens: auto;
+  margin-bottom: 24px;
+}
+
+.profession-project-card__btn {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: #fff;
+  font-size: clamp(13px, 1.3vw, 15px);
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.profession-project-card__btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .profession-project-card__btn {
+  background: #f2f2f4;
+  color: #1a1a1a;
+}
+
+.profession-project-card__btn--soon {
+  cursor: default;
+  opacity: 0.65;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+[data-theme="dark"] .profession-project-card__btn--soon {
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+/* Design section */
+.profession-design {
+  padding: var(--profession-section-gap) 24px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.profession-design__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+}
+
+.profession-design__title {
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.profession-design__strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2.5px;
+}
+
+.profession-design__text {
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.profession-design__cta {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d8d8d8 0%, #d4c8e8 45%, #c4b0dc 100%);
+  font-size: clamp(13px, 1.3vw, 15px);
+  font-weight: 500;
+  color: #2a2a2a;
+  line-height: 1.3;
+}
+
+[data-theme="dark"] .profession-design__cta {
+  background: linear-gradient(90deg, #2e2e36 0%, #3d3558 45%, #4a3d6e 100%);
+  color: #e8e4f0;
+}
+
+.profession-design__card {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  line-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.profession-design__card:hover {
+  transform: translateY(-4px);
+}
+
+.profession-design__card-img {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .profession-content {
+    padding-top: clamp(64px, 9vh, 80px);
+  }
+
+  .profession-design__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .profession-design__copy {
+    order: 2;
+  }
+
+  .profession-design__card {
+    order: 1;
+    margin: 0 auto;
+  }
+
+  .profession-project-card {
+    flex-basis: min(380px, 90vw);
+  }
+
+  .profession-project-card--wide {
+    flex-basis: min(420px, 92vw);
+  }
+}
+
+@media (max-width: 600px) {
+  body.profession-page {
+    --profession-section-gap: clamp(88px, 12vh, 132px);
+  }
+
+  .profession-content {
+    padding: clamp(60px, 8vh, 72px) 16px 0;
+  }
+
+  .profession-content__diagram {
+    max-width: 100%;
+    max-height: min(46vh, 380px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profession-intro__char {
+    animation: none !important;
+  }
+
+  .profession-reveal__word {
+    opacity: 1;
+  }
+
+  .profession-project-card,
+  .profession-projects__toolbar {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}

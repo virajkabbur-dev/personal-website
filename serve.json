@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/public/assets/favicon.png?v=2"
+    }
+  ],
+  "headers": [
+    {
+      "source": "**/favicon.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

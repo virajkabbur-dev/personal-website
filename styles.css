@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --text-faint: #999999;
+  --text-footer: rgba(0, 0, 0, 0.38);
+  --border: #eeeeee;
+  --icon-filter: none;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f12;
+  --text: #f2f2f4;
+  --text-secondary: #c8c8d0;
+  --text-muted: #9a9aa8;
+  --text-faint: #6e6e7a;
+  --text-footer: rgba(242, 242, 244, 0.38);
+  --border: #2a2a32;
+  --icon-filter: invert(1) brightness(1.15);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 64px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 36px 0;
+}
+
+.nav__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 64px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav__avatar-link {
+  display: flex;
+  line-height: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav__avatar-link:hover {
+  opacity: 0.75;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav__link {
+  font-family: 'Freeman', cursive;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav__link:hover {
+  opacity: 0.6;
+}
+
+/* Main layout */
+.landing {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 0 140px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  max-width: 640px;
+  z-index: 2;
+  transform: translateY(-56px);
+}
+
+.hero__title {
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.hero__bio {
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.hero__location {
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Sticky notes */
+.notes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.note {
+  position: absolute;
+  pointer-events: auto;
+  transition: transform 0.25s ease;
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.note:hover {
+  transform: scale(1.05) !important;
+}
+
+.note img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.note--my-takes {
+  top: calc(50vh - 248px);
+  left: max(64px, calc(50vw - 536px));
+  width: clamp(118px, 13.5vw, 186px);
+  transform: rotate(-6deg);
+}
+
+.note--profession {
+  top: calc(50vh - 268px);
+  right: 11%;
+  width: clamp(132px, 15vw, 228px);
+  transform: rotate(5deg);
+}
+
+.note--photography {
+  top: calc(50vh + 96px);
+  left: 26%;
+  width: clamp(124px, 14vw, 198px);
+  transform: rotate(-4deg);
+}
+
+.note--passion {
+  top: calc(50vh + 126px);
+  right: 22%;
+  width: clamp(124px, 14vw, 198px);
+  transform: rotate(4deg);
+}
+
+/* Section pages */
+.section {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  max-width: 720px;
+}
+
+.section__back {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.2s ease;
+}
+
+.section__back:hover {
+  color: var(--text);
+}
+
+.section__title {
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.section__title--my-takes { color: #3abbb3; }
+.section__title--profession { color: #855f81; }
+.section__title--photography { color: #53c2ee; }
+.section__title--passion { color: #f39852; }
+.section__title--about-me { color: var(--text); }
+
+.about-me__content p {
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.about-me__content p:last-child {
+  margin-bottom: 0;
+}
+
+.section__intro {
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.section__content {
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+}
+
+.section__placeholder {
+  font-size: 15px;
+  color: var(--text-faint);
+}
+
+.footer {
+  position: fixed;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-footer);
+  letter-spacing: 0.03em;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Page toolbar — section screens */
+.section-page .nav {
+  display: none;
+}
+
+.page-toolbar {
+  position: fixed;
+  top: 36px;
+  right: 64px;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-toolbar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.page-toolbar__btn:hover {
+  opacity: 0.65;
+}
+
+.page-toolbar__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  filter: var(--icon-filter);
+  transition: filter 0.25s ease;
+}
+
+html.page-enter-pending .page,
+html.page-enter-pending .page-toolbar,
+html.page-enter-pending .notes {
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page {
+    padding: 0 40px;
+  }
+
+  .nav__inner {
+    padding: 0 40px;
+  }
+
+  .page-toolbar {
+    right: 40px;
+  }
+
+  .note--my-takes {
+    top: calc(50vh - 210px);
+    left: max(40px, calc(50vw - 560px));
+    width: clamp(90px, 18vw, 140px);
+  }
+
+  .note--profession {
+    top: calc(50vh - 225px);
+    right: 9%;
+    width: clamp(100px, 20vw, 160px);
+  }
+
+  .note--photography {
+    top: calc(50vh + 72px);
+    left: 22%;
+    width: clamp(95px, 19vw, 150px);
+  }
+
+  .note--passion {
+    top: calc(50vh + 96px);
+    right: 18%;
+    width: clamp(95px, 19vw, 150px);
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 0 24px;
+  }
+
+  .nav {
+    padding: 24px 0;
+  }
+
+  .nav__inner {
+    padding: 0 24px;
+    gap: 16px;
+  }
+
+  .nav__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav__link {
+    font-size: 16px;
+  }
+
+  .page-toolbar {
+    top: 24px;
+    right: 24px;
+    gap: 12px;
+  }
+
+  .page-toolbar__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .landing {
+    padding: 100px 0 120px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .hero {
+    margin-bottom: 32px;
+    transform: none;
+  }
+
+  .notes {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 24px;
+  }
+
+  .note {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    justify-self: center;
+  }
+
+  .note--my-takes {
+    transform: rotate(-4deg);
+  }
+
+  .note--profession {
+    transform: rotate(3deg);
+  }
+
+  .note--photography {
+    transform: rotate(-3deg);
+  }
+
+  .note--passion {
+    transform: rotate(3deg);
+  }
+}

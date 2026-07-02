@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/assets/favicon.png?v=2" type="image/png">
+    <title>Profession — Viraj Kabbur</title>
+    <script src="../page-transition-pending.js"></script>
+    <script src="../theme.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../node_modules/locomotive-scroll/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="profession.css">
+</head>
+<body class="profession-page section-page" data-page-transition="enter exit">
+    <aside class="page-toolbar" aria-label="Page actions">
+        <button
+            type="button"
+            class="page-toolbar__btn page-toolbar__btn--theme"
+            data-asset-base="../public/assets"
+            aria-label="Switch to dark mode"
+        >
+            <img
+                src="../public/assets/dark-mode.svg"
+                alt=""
+                class="page-toolbar__icon page-toolbar__icon--theme"
+                width="32"
+                height="32"
+            >
+        </button>
+        <a href="../" class="page-toolbar__btn page-toolbar__btn--home page-link" aria-label="Go home">
+            <img
+                src="../public/assets/go-home.svg"
+                alt=""
+                class="page-toolbar__icon"
+                width="32"
+                height="32"
+            >
+        </a>
+    </aside>
+
+    <div class="profession-intro" id="professionIntro" aria-live="polite">
+        <div class="profession-intro__text" id="professionTypewriter"></div>
+    </div>
+
+    <div class="page">
+        <header class="nav">
+            <div class="nav__inner">
+                <a href="../about-me/" class="nav__avatar-link page-link" aria-label="About me">
+                    <img
+                        class="nav__avatar"
+                        src="../public/assets/profile-picture.png"
+                        alt="Viraj Kabbur"
+                    >
+                </a>
+                <nav>
+                    <ul class="nav__links">
+                        <li><a class="nav__link" href="https://www.linkedin.com/in/virajkabbur/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+                        <li><a class="nav__link" href="mailto:virajkabbur@yahoo.com">Let's Talk</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="profession-content">
+            <div class="profession-content__header">
+                <h1 class="profession-content__title">What I do?</h1>
+                <p class="profession-content__desc">
+                    I am a Product Manager, simply put a PM is someone who lives at the very
+                    intersection of Tech, Business and Design as you can see in the Venn diagram below
+                </p>
+            </div>
+            <div class="profession-content__diagram-wrap">
+                <img
+                    class="profession-content__diagram"
+                    src="../public/assets/product-manager-venn.svg"
+                    alt="Venn diagram showing Product Manager at the intersection of Technology, Business, and Design"
+                >
+            </div>
+            <p class="profession-content__tagline">That's why I like to call myself Jack of all</p>
+        </main>
+
+        <section class="profession-design">
+            <div class="profession-design__grid">
+                <div class="profession-design__copy">
+                    <h2 class="profession-design__title" id="profession-design-title">
+                        Why Master of <span class="profession-design__strike">N</span>One
+                    </h2>
+                    <p class="profession-design__text">
+                        Despite loving all the three parts, I am deeply fascinated by Design,
+                        I started my journey as UI/UX designer then transitioned to a Front End
+                        Developer and now work as a Product Manager. Despite loving Tech and
+                        Business equally, design will always have my soft spot
+                    </p>
+                    <span class="profession-design__cta">Click on the card to view my work</span>
+                </div>
+
+                <a href="../figma-portfolio/" class="profession-design__card page-link" aria-label="View my Figma design work">
+                    <img
+                        class="profession-design__card-img"
+                        src="../public/assets/figma-design-logo.svg"
+                        alt="Figma design work preview"
+                    >
+                </a>
+            </div>
+        </section>
+
+        <section class="profession-reveal" id="professionTechnology" aria-labelledby="profession-technology-title">
+            <div class="profession-reveal__pin">
+                <div class="profession-reveal__inner">
+                    <h2 class="profession-reveal__title" id="profession-technology-title">Technology</h2>
+                    <p class="profession-reveal__text" id="professionTechnologyText">
+                        I'm a Computer Engineering grad, but these days I build more with design instinct
+                        and AI pair-programming than raw syntax. I'm comfortable with Git, debugging, npm,
+                        and structuring a project — and solid in HTML/CSS — but I lean on tools like Cursor
+                        to bridge the gap on deeper JS/React logic. It means I can take an idea from a
+                        mindmap to a deployed product without waiting on a dev handoff. Here's what I've shipped.
+                    </p>
+                </div>
+            </div>
+
+            <div class="profession-projects" aria-label="Technology project showcase">
+            <div class="profession-projects__toolbar">
+                <nav class="profession-projects__nav" aria-label="Technology project carousel navigation">
+                        <button
+                            type="button"
+                            class="profession-projects__btn profession-projects__btn--prev"
+                            aria-label="Previous project"
+                        >
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button
+                            type="button"
+                            class="profession-projects__btn profession-projects__btn--next"
+                            aria-label="Next project"
+                        >
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </nav>
+            </div>
+
+            <div class="profession-projects__viewport">
+                <div class="profession-projects__track" id="professionProjectsTrack">
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">RealLives Website</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Designed &amp; Built</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            The primary marketing site for RealLives — built with 5 distinct views
+                            (school, university, gamer, homeschooler) so content adapts to who's visiting.
+                            Designed and built end-to-end.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">View Website</a>
+                    </article>
+
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">RCMI Website</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Contributed</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">Website</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            Website for RealLives ChangeMaker Index — a behavior tracker with a proprietary
+                            algorithm that turns in-game player behavior into a report on 18 core competencies,
+                            showing users where to improve. Contributed to the site for this product.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">View Website</a>
+                    </article>
+
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">RealLives Simulation Dashboard</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Designed &amp; Built</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            The hub for the entire RealLives ecosystem — account creation, login, and the
+                            simulation itself all live here. Mindmapped, designed, and built from concept
+                            to deployment.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">View Dashboard</a>
+                    </article>
+
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">RealLives Simulation — Angular Enhancements</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Enhanced</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">Angular</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            Led a full UI and UX overhaul within an existing Angular codebase — improving
+                            usability and visual polish across the simulation experience.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">View Project</a>
+                    </article>
+
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">Business with Purpose</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Designing → Building</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">In Progress</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            An entrepreneur-builder platform, currently moving from mindmap to full design —
+                            now building the frontend with AI-assisted development.
+                        </p>
+                        <span class="profession-project-card__btn profession-project-card__btn--soon">Coming Soon</span>
+                    </article>
+
+                    <article class="profession-project-card">
+                        <h3 class="profession-project-card__title">RealLives AI — New POC</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Designed &amp; Built</span>
+                            <span class="profession-project-card__tag profession-project-card__tag--stack">Figma + React</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            A proof-of-concept for the next RealLives AI — powered by a fully AI-driven
+                            backend that demanded a fluid, dynamic UI. Designed the experience in Figma,
+                            then built a stable working frontend.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">View POC</a>
+                    </article>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="profession-reveal" id="professionBusiness" aria-labelledby="profession-business-title">
+            <div class="profession-reveal__pin">
+                <div class="profession-reveal__inner">
+                    <h2 class="profession-reveal__title" id="profession-business-title">Business</h2>
+                    <p class="profession-reveal__text" id="professionBusinessText">
+                        I think in systems before I think in slides. A lot of my business work starts as a mindmap,
+                        structuring problems, weighing tradeoffs, figuring out what actually moves the needle.
+                        That's shown up in shaping licensing policy for RealLives projects, running global Google
+                        Ads campaigns for RealLives Sim, and taking the product on the road, public speaking,
+                        presentations, and workshops in schools and universities. Here's where that thinking has landed.
+                    </p>
+                </div>
+            </div>
+
+            <div class="profession-projects profession-projects--business" aria-label="Business project showcase">
+            <div class="profession-projects__toolbar">
+                <nav class="profession-projects__nav" aria-label="Business project carousel navigation">
+                    <button
+                        type="button"
+                        class="profession-projects__btn profession-projects__btn--prev"
+                        aria-label="Previous business project"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        class="profession-projects__btn profession-projects__btn--next"
+                        aria-label="Next business project"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="profession-projects__viewport">
+                <div class="profession-projects__track" id="professionBusinessTrack">
+                    <article class="profession-project-card profession-project-card--wide">
+                        <h3 class="profession-project-card__title">Business Project One</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Placeholder</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            Placeholder description for an upcoming business showcase card.
+                            Details and visuals will be added soon.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">Learn More</a>
+                    </article>
+
+                    <article class="profession-project-card profession-project-card--wide">
+                        <h3 class="profession-project-card__title">Business Project Two</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Placeholder</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            Placeholder description for an upcoming business showcase card.
+                            Details and visuals will be added soon.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">Learn More</a>
+                    </article>
+
+                    <article class="profession-project-card profession-project-card--wide">
+                        <h3 class="profession-project-card__title">Business Project Three</h3>
+                        <div class="profession-project-card__tags">
+                            <span class="profession-project-card__tag">Placeholder</span>
+                        </div>
+                        <div class="profession-project-card__image">
+                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                        </div>
+                        <p class="profession-project-card__desc">
+                            Placeholder description for an upcoming business showcase card.
+                            Details and visuals will be added soon.
+                        </p>
+                        <a href="#" class="profession-project-card__btn">Learn More</a>
+                    </article>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <footer class="footer profession-design__footer">2026 @ Viraj Kabbur</footer>
+    </div>
+
+    <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="../page-transition.js"></script>
+    <script src="../node_modules/lenis/dist/lenis.min.js"></script>
+    <script>window.lenis = window.Lenis;</script>
+    <script src="../node_modules/locomotive-scroll/dist/locomotive-scroll.umd.js"></script>
+    <script src="profession.js"></script>
+</body>
+</html>

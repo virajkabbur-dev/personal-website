@@ -3,11 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/assets/favicon.png?v=2" type="image/png">
     <title>Viraj Kabbur</title>
+    <script src="page-transition-pending.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-        <h1 style="text-align: center;">Hi! I'm Viraj Kabbur</h1>
-        <p style="text-align: center;">I am a professional mosquito killer</p>
-        
+<body data-page-transition="enter exit">
+    <div class="page">
+    <header class="nav">
+        <div class="nav__inner">
+            <a href="about-me/" class="nav__avatar-link page-link" aria-label="About me">
+                <img
+                    class="nav__avatar"
+                    src="public/assets/profile-picture.png"
+                    alt="Viraj Kabbur"
+                >
+            </a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a class="nav__link" href="https://www.linkedin.com/in/virajkabbur/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+                    <li><a class="nav__link" href="mailto:virajkabbur@yahoo.com">Let's Talk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="landing">
+        <section class="hero">
+            <h1 class="hero__title">Hey! This is Viraj Kabbur</h1>
+            <p class="hero__bio">I am an avid tech enthusiast, blog writer,<br>motorbiker and photographer</p>
+            <p class="hero__location">Based in Pune, India 🇮🇳</p>
+        </section>
+
+        <div class="notes">
+            <a class="note note--my-takes page-link" href="my-takes/" aria-label="My Takes">
+                <img src="public/assets/my-takes.svg" alt="My Takes">
+            </a>
+            <a class="note note--profession page-link" href="profession/" aria-label="Profession">
+                <img src="public/assets/profession.svg" alt="Profession">
+            </a>
+            <a class="note note--photography page-link" href="photography/" aria-label="Photography">
+                <img src="public/assets/photography.svg" alt="Photography">
+            </a>
+            <a class="note note--passion page-link" href="passion/" aria-label="Passion">
+                <img src="public/assets/passion.svg" alt="Passion">
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">2026 @ Viraj Kabbur</footer>
+    </div>
+    <script src="node_modules/gsap/dist/gsap.min.js"></script>
+    <script src="page-transition.js"></script>
 </body>
 </html>

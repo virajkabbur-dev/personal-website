@@ -1,0 +1,15 @@
+{
+  "name": "personal-website",
+  "private": true,
+  "scripts": {
+    "dev": "serve .",
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "locomotive-scroll": "^5.0.1"
+  }
+}
