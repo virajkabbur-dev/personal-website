@@ -46,6 +46,28 @@ body.profession-page--animating {
   touch-action: none;
 }
 
+body.profession-page--animating {
+  position: fixed;
+  width: 100%;
+  inset: 0;
+}
+
+body.profession-page:not(.profession-page--ready) .page {
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+body.profession-page:not(.profession-page--ready) .profession-design,
+body.profession-page:not(.profession-page--ready) .profession-reveal,
+body.profession-page:not(.profession-page--ready) .profession-design__footer {
+  display: none;
+}
+
+body.profession-page--text-reveal {
+  overflow: hidden;
+  touch-action: none;
+}
+
 .profession-page .nav {
   display: none;
 }
@@ -101,7 +123,7 @@ body.profession-page--animating {
 .profession-content {
   display: flex;
   flex-direction: column;
-  padding: var(--profession-page-top) 24px 0;
+  padding: var(--profession-page-top) var(--page-gutter) 0;
   max-width: 920px;
   margin: 0 auto;
   text-align: center;
@@ -160,7 +182,7 @@ body.profession-page--animating {
 }
 
 .profession-reveal__pin {
-  padding: var(--profession-section-gap) 24px 0;
+  padding: var(--profession-section-gap) var(--page-gutter) 0;
 }
 
 .profession-reveal > .profession-projects {
@@ -208,7 +230,7 @@ body.profession-page--animating {
   right: 0;
   z-index: 5;
   background: var(--bg);
-  padding: var(--profession-section-gap) 24px 0;
+  padding: var(--profession-section-gap) var(--page-gutter) 0;
 }
 
 .profession-reveal__placeholder {
@@ -219,7 +241,7 @@ body.profession-page--animating {
 .profession-projects {
   max-width: 1100px;
   margin: 0 auto;
-  padding: var(--profession-section-gap) 24px 0;
+  padding: var(--profession-section-gap) var(--page-gutter) 0;
 }
 
 .profession-projects--business {
@@ -320,8 +342,15 @@ body.profession-page--animating {
 .profession-project-card__tags {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   margin-bottom: 20px;
+}
+
+.profession-project-card__tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .profession-project-card__tag {
@@ -350,6 +379,79 @@ body.profession-page--animating {
   background: rgba(0, 0, 0, 0.18);
 }
 
+.profession-project-card__tag--live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 4px 11px 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 6px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  color: #1c1c1c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profession-project-card__live-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00d492;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 212, 146, 0.75);
+}
+
+.profession-project-card__live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 212, 146, 0.55);
+  animation: profession-live-ring 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes profession-live-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.9;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+[data-theme="dark"] .profession-project-card__tag--live {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 8px 20px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .profession-project-card__live-dot {
+  background: #34f5b8;
+  box-shadow: 0 0 10px rgba(52, 245, 184, 0.65);
+}
+
+[data-theme="dark"] .profession-project-card__live-dot::after {
+  border-color: rgba(52, 245, 184, 0.5);
+}
+
 .profession-project-card__image {
   display: flex;
   align-items: center;
@@ -363,6 +465,15 @@ body.profession-page--animating {
 
 [data-theme="dark"] .profession-project-card__image {
   background: rgba(0, 0, 0, 0.2);
+}
+
+.profession-project-card__image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(180px, 28vw, 240px);
+  object-fit: cover;
+  object-position: top center;
 }
 
 .profession-project-card__image-placeholder {
@@ -418,7 +529,7 @@ body.profession-page--animating {
 
 /* Design section */
 .profession-design {
-  padding: var(--profession-section-gap) 24px 0;
+  padding: var(--profession-section-gap) var(--page-gutter) 0;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -495,6 +606,10 @@ body.profession-page--animating {
     padding-top: clamp(64px, 9vh, 80px);
   }
 
+  .profession-reveal__pin--locked {
+    padding-top: clamp(72px, 11vh, 108px);
+  }
+
   .profession-design__grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -520,16 +635,65 @@ body.profession-page--animating {
 
 @media (max-width: 600px) {
   body.profession-page {
-    --profession-section-gap: clamp(88px, 12vh, 132px);
+    --profession-section-gap: clamp(72px, 10vh, 112px);
+  }
+
+  .profession-intro__text {
+    font-size: clamp(32px, 9vw, 42px);
+    max-width: calc(100vw - 32px);
   }
 
   .profession-content {
-    padding: clamp(60px, 8vh, 72px) 16px 0;
+    padding: clamp(56px, 8vh, 72px) var(--page-gutter) 0;
   }
 
   .profession-content__diagram {
     max-width: 100%;
-    max-height: min(46vh, 380px);
+    max-height: min(42vh, 340px);
+  }
+
+  .profession-reveal__text,
+  .profession-project-card__desc {
+    text-align: left;
+    hyphens: none;
+  }
+
+  .profession-project-card {
+    flex-basis: calc(100vw - var(--page-gutter) * 2 - 8px);
+    padding: clamp(20px, 5vw, 28px);
+    border-radius: 18px;
+  }
+
+  .profession-project-card--wide {
+    flex-basis: calc(100vw - var(--page-gutter) * 2 - 8px);
+  }
+
+  .profession-project-card__tags {
+    gap: 6px;
+  }
+
+  .profession-project-card__tag--live {
+    margin-left: 0;
+  }
+
+  .profession-project-card__image,
+  .profession-project-card__image-img {
+    min-height: clamp(140px, 40vw, 200px);
+  }
+
+  .profession-projects__btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profession-design__cta {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+  }
+
+  .profession-page .profession-design__footer {
+    padding-bottom: calc(28px + var(--safe-bottom));
   }
 }
 

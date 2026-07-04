@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="/public/assets/favicon.png?v=2" type="image/png">
     <title>Profession — Viraj Kabbur</title>
     <script src="../page-transition-pending.js"></script>
@@ -111,7 +111,7 @@
                     <p class="profession-reveal__text" id="professionTechnologyText">
                         I'm a Computer Engineering grad, but these days I build more with design instinct
                         and AI pair-programming than raw syntax. I'm comfortable with Git, debugging, npm,
-                        and structuring a project — and solid in HTML/CSS — but I lean on tools like Cursor
+                        and structuring a project and solid in HTML/CSS but I lean on tools like Cursor
                         to bridge the gap on deeper JS/React logic. It means I can take an idea from a
                         mindmap to a deployed product without waiting on a dev handoff. Here's what I've shipped.
                     </p>
@@ -147,68 +147,108 @@
                     <article class="profession-project-card">
                         <h3 class="profession-project-card__title">RealLives Website</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Designed &amp; Built</span>
-                            <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Designed &amp; Built</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                            </div>
+                            <span class="profession-project-card__tag profession-project-card__tag--live">
+                                <span class="profession-project-card__live-dot" aria-hidden="true"></span>
+                                Live
+                            </span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/reallives-website.png"
+                                alt="RealLives marketing website preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             The primary marketing site for RealLives — built with 5 distinct views
                             (school, university, gamer, homeschooler) so content adapts to who's visiting.
                             Designed and built end-to-end.
                         </p>
-                        <a href="#" class="profession-project-card__btn">View Website</a>
+                        <a href="https://reallivesworld.com/reallives/school" class="profession-project-card__btn" target="_blank" rel="noopener noreferrer">View Website</a>
                     </article>
 
                     <article class="profession-project-card">
                         <h3 class="profession-project-card__title">RCMI Website</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Contributed</span>
-                            <span class="profession-project-card__tag profession-project-card__tag--stack">Website</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Designed &amp; Built</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">Website</span>
+                            </div>
+                            <span class="profession-project-card__tag profession-project-card__tag--live">
+                                <span class="profession-project-card__live-dot" aria-hidden="true"></span>
+                                Live
+                            </span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/changemaker-index.png"
+                                alt="RealLives ChangeMaker Index website preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             Website for RealLives ChangeMaker Index — a behavior tracker with a proprietary
                             algorithm that turns in-game player behavior into a report on 18 core competencies,
-                            showing users where to improve. Contributed to the site for this product.
+                            showing users where to improve. Designed and built end-to-end.
                         </p>
-                        <a href="#" class="profession-project-card__btn">View Website</a>
+                        <a href="https://changemakerindex.com/Home" class="profession-project-card__btn" target="_blank" rel="noopener noreferrer">View Website</a>
                     </article>
 
                     <article class="profession-project-card">
-                        <h3 class="profession-project-card__title">RealLives Simulation Dashboard</h3>
+                        <h3 class="profession-project-card__title">RealLives Dashboard</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Designed &amp; Built</span>
-                            <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Designed &amp; Built</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">React 19</span>
+                            </div>
+                            <span class="profession-project-card__tag profession-project-card__tag--live">
+                                <span class="profession-project-card__live-dot" aria-hidden="true"></span>
+                                Live
+                            </span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/reallives-simulation.png"
+                                alt="RealLives Simulation Dashboard preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             The hub for the entire RealLives ecosystem — account creation, login, and the
                             simulation itself all live here. Mindmapped, designed, and built from concept
                             to deployment.
                         </p>
-                        <a href="#" class="profession-project-card__btn">View Dashboard</a>
+                        <a href="https://reallivesworld.com/login" class="profession-project-card__btn" target="_blank" rel="noopener noreferrer">View Dashboard</a>
                     </article>
 
                     <article class="profession-project-card">
-                        <h3 class="profession-project-card__title">RealLives Simulation — Angular Enhancements</h3>
+                        <h3 class="profession-project-card__title">RealLives Game</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Enhanced</span>
-                            <span class="profession-project-card__tag profession-project-card__tag--stack">Angular</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Enhanced</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">Angular</span>
+                            </div>
+                            <span class="profession-project-card__tag profession-project-card__tag--live">
+                                <span class="profession-project-card__live-dot" aria-hidden="true"></span>
+                                Live
+                            </span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/reallives-game.png"
+                                alt="RealLives Simulation Angular enhancements preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             Led a full UI and UX overhaul within an existing Angular codebase — improving
                             usability and visual polish across the simulation experience.
                         </p>
-                        <a href="#" class="profession-project-card__btn">View Project</a>
+                        <a href="https://reallivesworld.com/login" class="profession-project-card__btn" target="_blank" rel="noopener noreferrer">View Project</a>
                     </article>
 
                     <article class="profession-project-card">
@@ -218,7 +258,11 @@
                             <span class="profession-project-card__tag profession-project-card__tag--stack">In Progress</span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/business-with-purpose.png"
+                                alt="Business with Purpose platform preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             An entrepreneur-builder platform, currently moving from mindmap to full design —
@@ -234,14 +278,18 @@
                             <span class="profession-project-card__tag profession-project-card__tag--stack">Figma + React</span>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/reallives-ai-version.png"
+                                alt="RealLives AI proof-of-concept preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
                             A proof-of-concept for the next RealLives AI — powered by a fully AI-driven
                             backend that demanded a fluid, dynamic UI. Designed the experience in Figma,
                             then built a stable working frontend.
                         </p>
-                        <a href="#" class="profession-project-card__btn">View POC</a>
+                        <span class="profession-project-card__btn profession-project-card__btn--soon">Coming Soon</span>
                     </article>
                 </div>
             </div>
@@ -289,48 +337,76 @@
             <div class="profession-projects__viewport">
                 <div class="profession-projects__track" id="professionBusinessTrack">
                     <article class="profession-project-card profession-project-card--wide">
-                        <h3 class="profession-project-card__title">Business Project One</h3>
+                        <h3 class="profession-project-card__title">AI Licensing &amp; Credit System</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Placeholder</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Strategy</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">Pricing Model</span>
+                            </div>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/ai-pricing.png"
+                                alt="AI licensing and credit system preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
-                            Placeholder description for an upcoming business showcase card.
-                            Details and visuals will be added soon.
+                            When RealLives shifted to a new AI-driven architecture, static unlimited-play
+                            pricing no longer worked, token costs meant every simulated life had a real cost
+                            behind it. I led the shift to a credit-based system (1 credit = 1 simulated life),
+                            grounded in thorough token-cost evaluation, to build a licensing model that could
+                            actually scale with the new architecture.
                         </p>
-                        <a href="#" class="profession-project-card__btn">Learn More</a>
                     </article>
 
                     <article class="profession-project-card profession-project-card--wide">
-                        <h3 class="profession-project-card__title">Business Project Two</h3>
+                        <h3 class="profession-project-card__title">Global Growth, Google Ads</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Placeholder</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Growth</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">Paid Marketing</span>
+                            </div>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/google-ads.png"
+                                alt="Global Google Ads growth campaigns preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
-                            Placeholder description for an upcoming business showcase card.
-                            Details and visuals will be added soon.
+                            Ran and optimized global Google Ads campaigns for RealLives Sim, driving
+                            ~5,000 impressions and 300 clicks daily at a $1.50 average CPC, with traffic from
+                            markets as varied as Turkey, Argentina, and the US. Learned to think strategically
+                            about headlines, keywords, and targeting to make a fixed budget work across very
+                            different audiences.
                         </p>
-                        <a href="#" class="profession-project-card__btn">Learn More</a>
                     </article>
 
                     <article class="profession-project-card profession-project-card--wide">
-                        <h3 class="profession-project-card__title">Business Project Three</h3>
+                        <h3 class="profession-project-card__title">Workshops &amp; Public Speaking</h3>
                         <div class="profession-project-card__tags">
-                            <span class="profession-project-card__tag">Placeholder</span>
+                            <div class="profession-project-card__tags-group">
+                                <span class="profession-project-card__tag">Community</span>
+                                <span class="profession-project-card__tag profession-project-card__tag--stack">Event Design</span>
+                            </div>
                         </div>
                         <div class="profession-project-card__image">
-                            <span class="profession-project-card__image-placeholder">Image coming soon</span>
+                            <img
+                                class="profession-project-card__image-img"
+                                src="../public/assets/workshops.png"
+                                alt="Workshops and public speaking preview"
+                            >
                         </div>
                         <p class="profession-project-card__desc">
-                            Placeholder description for an upcoming business showcase card.
-                            Details and visuals will be added soon.
+                            Took RealLives beyond the screen, leading an empathy workshop at IIT Bombay,
+                            and presenting to stakeholders, parents, teachers, and students at The Orchid
+                            School, Pune. Flagship project: designed and ran a full Changemaker Workshop at
+                            TOS from the ground up, event planning, coordination, and a custom Changemaker
+                            certificate, helping 75 students complete the program. TOS remains an exclusive
+                            ongoing partnership.
                         </p>
-                        <a href="#" class="profession-project-card__btn">Learn More</a>
                     </article>
                 </div>
             </div>

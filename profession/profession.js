@@ -19,6 +19,14 @@
   let resizeHandler = null;
   let activeTextReveal = null;
 
+  function isMobileView() {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   function initLocomotiveScroll() {
     if (typeof locomotiveScroll === 'undefined' || prefersReducedMotion() || locoScroll) {
       return locoScroll;
@@ -84,7 +92,11 @@
     const words = splitRevealWords(textEl);
     const initialVisible = 3;
     const revealWords = words.slice(initialVisible);
-    const scrollBudget = () => Math.max(window.innerHeight * 1.1, revealWords.length * 34);
+    const scrollBudget = () => {
+      const base = Math.max(window.innerHeight * 1.1, revealWords.length * 34);
+      return isMobileView() ? base * 0.5 : base;
+    };
+    const lockThreshold = () => (isMobileView() ? 14 : 2);
 
     words.forEach((word, index) => {
       gsap.set(word, { opacity: index < initialVisible ? 1 : 0.18 });
@@ -100,6 +112,7 @@
       phase: 'idle',
       placeholder: null,
       touchY: 0,
+      mobileTouchMove: null,
     };
 
     function applyProgress() {
@@ -129,7 +142,22 @@
       state.pinEl.after(state.placeholder);
 
       state.pinEl.classList.add('profession-reveal__pin--locked');
+      body.classList.add('profession-page--text-reveal');
       lenis.stop();
+
+      if (isMobileView()) {
+        state.mobileTouchMove = (e) => {
+          if (activeTextReveal !== state || state.phase !== 'locked') return;
+          if (e.touches.length !== 1) return;
+          const y = e.touches[0].clientY;
+          const delta = (state.touchY - y) * 1.4;
+          state.touchY = y;
+          if (!consumeScrollDelta(delta)) return;
+          e.preventDefault();
+        };
+        window.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
+        window.addEventListener('touchmove', state.mobileTouchMove, { passive: false, capture: true });
+      }
     }
 
     function unlock() {
@@ -144,6 +172,13 @@
       state.pinEl.classList.remove('profession-reveal__pin--locked');
       state.placeholder?.remove();
       state.placeholder = null;
+
+      body.classList.remove('profession-page--text-reveal');
+      if (state.mobileTouchMove) {
+        window.removeEventListener('touchstart', onTouchStart, { capture: true });
+        window.removeEventListener('touchmove', state.mobileTouchMove, { capture: true });
+        state.mobileTouchMove = null;
+      }
 
       activeTextReveal = null;
       lenis.start();
@@ -174,7 +209,7 @@
     function onLenisScroll() {
       if (state.phase !== 'idle') return;
       const { top } = state.pinEl.getBoundingClientRect();
-      if (top <= 2) lock();
+      if (top <= lockThreshold()) lock();
     }
 
     function onWheel(e) {
@@ -189,19 +224,24 @@
       state.touchY = e.touches[0].clientY;
     }
 
-    function onTouchMove(e) {
-      if (activeTextReveal !== state) return;
-      const y = e.touches[0].clientY;
-      const delta = state.touchY - y;
-      state.touchY = y;
-      if (!consumeScrollDelta(delta)) return;
-      e.preventDefault();
-    }
-
     lenis.on('scroll', onLenisScroll);
     window.addEventListener('wheel', onWheel, { passive: false, capture: true });
-    window.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: false, capture: true });
+
+    if (!isMobileView()) {
+      window.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
+      window.addEventListener(
+        'touchmove',
+        (e) => {
+          if (activeTextReveal !== state) return;
+          const y = e.touches[0].clientY;
+          const delta = state.touchY - y;
+          state.touchY = y;
+          if (!consumeScrollDelta(delta)) return;
+          e.preventDefault();
+        },
+        { passive: false, capture: true }
+      );
+    }
   }
 
   function initTextReveal() {
@@ -362,10 +402,6 @@
     return parseFloat(window.getComputedStyle(typewriter).fontSize) || 64;
   }
 
-  function prefersReducedMotion() {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-
   function hasSeenIntro() {
     try {
       return sessionStorage.getItem(INTRO_SEEN_KEY) === '1';
@@ -472,10 +508,50 @@
     gsap.set(typewriter, getCornerTweenValues());
 
     body.classList.add('profession-page--ready');
-    gsap.set(content, { autoAlpha: 1, y: 0 });
+    gsap.set(content, { autoAlpha: 1, y: 0, visibility: 'visible' });
     markIntroSeen();
     onPageReady();
   }
+
+  function restoreProfessionFromHistory() {
+    body.classList.remove('profession-page--animating', 'profession-page--text-reveal');
+    window.removeEventListener('wheel', preventScroll);
+    window.removeEventListener('touchmove', preventScroll);
+    window.removeEventListener('keydown', preventKeyScroll);
+
+    document.querySelectorAll('.profession-reveal__pin--locked').forEach((el) => {
+      el.classList.remove('profession-reveal__pin--locked');
+    });
+    document.querySelectorAll('.profession-reveal__placeholder').forEach((el) => el.remove());
+    activeTextReveal = null;
+
+    document.documentElement.classList.remove('page-enter-pending');
+
+    const page = document.querySelector('.page');
+    [page, typewriter, content].filter(Boolean).forEach((el) => {
+      gsap.set(el, { clearProps: 'opacity,transform,visibility,autoAlpha,y,x,scale' });
+    });
+
+    if (body.classList.contains('profession-page--ready')) {
+      gsap.set(content, { autoAlpha: 1, visibility: 'visible' });
+      if (page) gsap.set(page, { opacity: 1 });
+      locoScroll?.lenisInstance?.start();
+      locoScroll?.resize();
+      return;
+    }
+
+    showFinalState();
+  }
+
+  window.addEventListener('pagehide', (event) => {
+    if (event.persisted) restoreProfessionFromHistory();
+  });
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) restoreProfessionFromHistory();
+  });
+
+  window.addEventListener('page-history-restore', restoreProfessionFromHistory);
 
   function runAnimation() {
     const { line1, line2, all: chars } = buildTypewriterDOM();
@@ -534,6 +610,14 @@
   if (prefersReducedMotion() || hasSeenIntro()) {
     showFinalState();
   } else {
+    try {
+      const nav = performance.getEntriesByType('navigation')[0];
+      if (nav && nav.type === 'back_forward') {
+        showFinalState();
+        return;
+      }
+    } catch (e) {}
+
     lockScroll();
     runAnimation();
   }

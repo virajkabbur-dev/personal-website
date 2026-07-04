@@ -11,7 +11,16 @@
     return (document.body.dataset.pageTransition || '').includes(mode);
   }
 
-  function getExitTargets() {
+  function isHistoryNavigation() {
+    try {
+      const nav = performance.getEntriesByType('navigation')[0];
+      return nav && nav.type === 'back_forward';
+    } catch {
+      return false;
+    }
+  }
+
+  function getTransitionTargets() {
     return [
       document.querySelector('.page'),
       document.querySelector('.page-toolbar'),
@@ -23,6 +32,20 @@
   function clearPageTransform() {
     const page = document.querySelector('.page');
     if (page) gsap.set(page, { clearProps: 'transform' });
+  }
+
+  function resetPageVisibility() {
+    document.documentElement.classList.remove('page-enter-pending');
+
+    try {
+      sessionStorage.removeItem(TRANSITION_KEY);
+    } catch (e) {}
+
+    getTransitionTargets().forEach((el) => {
+      gsap.set(el, { clearProps: 'opacity,transform,visibility,autoAlpha,y' });
+    });
+
+    clearPageTransform();
   }
 
   function runEnterAnimation() {
@@ -142,10 +165,32 @@
     });
   }
 
+  function handleHistoryRestore() {
+    resetPageVisibility();
+    window.dispatchEvent(new CustomEvent('page-history-restore'));
+  }
+
+  window.addEventListener('pagehide', (event) => {
+    if (event.persisted) {
+      resetPageVisibility();
+    }
+  });
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted || isHistoryNavigation()) {
+      handleHistoryRestore();
+    }
+  });
+
   clearPageTransform();
 
   if (hasTransition('enter')) {
-    if (document.body.classList.contains('profession-page')) {
+    if (isHistoryNavigation()) {
+      resetPageVisibility();
+      requestAnimationFrame(() => {
+        window.dispatchEvent(new CustomEvent('page-history-restore'));
+      });
+    } else if (document.body.classList.contains('profession-page')) {
       if (sessionStorage.getItem(TRANSITION_KEY)) {
         sessionStorage.removeItem(TRANSITION_KEY);
         document.documentElement.classList.remove('page-enter-pending');

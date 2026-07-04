@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="/public/assets/favicon.png?v=2" type="image/png">
     <title>My Takes — Viraj Kabbur</title>
     <script src="../page-transition-pending.js"></script>
     <script src="../theme.js"></script>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="my-takes.css">
 </head>
-<body class="section-page" data-page-transition="enter exit">
+<body class="my-takes-page section-page" data-page-transition="enter exit">
     <aside class="page-toolbar" aria-label="Page actions">
         <button
             type="button"
@@ -57,9 +58,143 @@
 
         <main class="section">
             <h1 class="section__title section__title--my-takes">My Takes</h1>
-            <p class="section__intro">Thoughts, opinions, and blog posts on tech and beyond.</p>
+            <p class="section__intro">Technical deep-dives on the web, plus personal essays on life and cinema.</p>
+
             <div class="section__content">
-                <p class="section__placeholder">Content coming soon.</p>
+                <h2 class="section-divider section-divider--my-takes">Featured Takes</h2>
+                <div class="takes">
+                    <section class="takes__block" aria-labelledby="takes-tech-heading">
+                        <div class="takes__header">
+                            <div class="takes__heading">
+                                <h2 class="takes__label" id="takes-tech-heading">Tech</h2>
+                                <p class="takes__desc">Deep-dives on the web — breaking down dev tools, version control, and how things work under the hood.</p>
+                                <div class="takes__topics" aria-label="Tech writing topics">
+                                    <span class="takes__topic">Git &amp; Version Control</span>
+                                    <span class="takes__topic">Web Fundamentals</span>
+                                    <span class="takes__topic">Dev Concepts</span>
+                                </div>
+                            </div>
+                            <a
+                                class="takes__platform"
+                                href="https://figuring-out-the-web.hashnode.dev/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Figuring Out The Web</a>
+                        </div>
+
+                        <div class="takes__series">
+                            <a
+                                class="takes__card"
+                                href="https://figuring-out-the-web.hashnode.dev/why-version-control-systems-are-essential"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div class="takes__card-cover">
+                                    <img
+                                        src="../public/assets/my-takes/git-part-1.png"
+                                        alt="Why Version Control Systems are Essential cover"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </div>
+                                <div class="takes__card-body">
+                                    <div class="takes__card-meta">
+                                        <span class="takes__tag takes__tag--series">Git Series · Part 1</span>
+                                    </div>
+                                    <h3 class="takes__card-title">Why Version Control Systems are Essential</h3>
+                                    <p class="takes__card-subtitle">Before touching a single Git command — why every developer needs version control.</p>
+                                    <span class="takes__card-cta">Read it</span>
+                                </div>
+                            </a>
+
+                            <a
+                                class="takes__card"
+                                href="https://figuring-out-the-web.hashnode.dev/git-for-beginners"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div class="takes__card-cover">
+                                    <img
+                                        src="../public/assets/my-takes/git-part-2.png"
+                                        alt="Git for Beginners cover"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </div>
+                                <div class="takes__card-body">
+                                    <div class="takes__card-meta">
+                                        <span class="takes__tag takes__tag--series">Git Series · Part 2</span>
+                                    </div>
+                                    <h3 class="takes__card-title">Git for Beginners</h3>
+                                    <p class="takes__card-subtitle">The practical walkthrough — repos, commits, branches, and your first workflow.</p>
+                                    <span class="takes__card-cta">Read it</span>
+                                </div>
+                            </a>
+
+                            <a
+                                class="takes__card"
+                                href="https://figuring-out-the-web.hashnode.dev/deep-diving-inside-git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div class="takes__card-cover">
+                                    <img
+                                        src="../public/assets/my-takes/git-part-3.png"
+                                        alt="Deep Diving Inside Git cover"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </div>
+                                <div class="takes__card-body">
+                                    <div class="takes__card-meta">
+                                        <span class="takes__tag takes__tag--series">Git Series · Part 3</span>
+                                    </div>
+                                    <h3 class="takes__card-title">Deep Diving Inside Git</h3>
+                                    <p class="takes__card-subtitle">Under the hood — how Git actually stores, tracks, and thinks about your code.</p>
+                                    <span class="takes__card-cta">Read it</span>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="takes__block" aria-labelledby="takes-life-heading">
+                        <div class="takes__header">
+                            <div class="takes__heading">
+                                <h2 class="takes__label" id="takes-life-heading">Life &amp; Cinema</h2>
+                                <p class="takes__desc">Personal essays on films, everyday life, philosophy, and the things that move me off the keyboard.</p>
+                                <div class="takes__topics" aria-label="Personal writing topics">
+                                    <span class="takes__topic">Movie Takes</span>
+                                    <span class="takes__topic">Personal Essays</span>
+                                    <span class="takes__topic">Philosophy</span>
+                                    <span class="takes__topic">Bikes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            class="takes__cta"
+                            href="https://blogs.virajkabbur.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Read personal essays on Viraj Writes at blogs.virajkabbur.com"
+                        >
+                            <div class="takes__cta-media">
+                                <img
+                                    src="../public/assets/my-takes/chaand-mera-dil.jpg"
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </div>
+                            <div class="takes__cta-body">
+                                <span class="takes__cta-eyebrow">Viraj Writes on Medium</span>
+                                <h3 class="takes__cta-title">Personal essays live on Medium</h3>
+                                <p class="takes__cta-text">Life, cinema, bikes, and philosophy — written without AI, meant to be felt.</p>
+                                <span class="takes__cta-link">Visit the blog</span>
+                            </div>
+                        </a>
+                    </section>
+                </div>
             </div>
         </main>
 

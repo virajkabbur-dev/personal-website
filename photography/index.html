@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="/public/assets/favicon.png?v=2" type="image/png">
     <title>Photography — Viraj Kabbur</title>
     <script src="../page-transition-pending.js"></script>
     <script src="../theme.js"></script>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="photography.css">
 </head>
-<body class="section-page" data-page-transition="enter exit">
+<body class="photography-page section-page" data-page-transition="enter exit">
     <aside class="page-toolbar" aria-label="Page actions">
         <button
             type="button"
@@ -57,15 +58,81 @@
 
         <main class="section">
             <h1 class="section__title section__title--photography">Photography</h1>
-            <p class="section__intro">A gallery of moments captured through my lens.</p>
+            <p class="section__intro">
+                <span>A gallery of moments captured through my lens.</span>
+                <span class="section__count">16 frames</span>
+            </p>
+
             <div class="section__content">
-                <p class="section__placeholder">Content coming soon.</p>
+                <h2 class="section-divider section-divider--photography">Gallery</h2>
+                <div class="gallery" id="gallery" aria-label="Photography gallery">
+                    <button class="gallery__item" type="button" aria-label="View photograph 1">
+                        <img src="../public/assets/photography/IMG_3375.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 2">
+                        <img src="../public/assets/photography/IMG_0878.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 3">
+                        <img src="../public/assets/photography/IMG_1225.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 4">
+                        <img src="../public/assets/photography/NO_FUSION_0619_010.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 5">
+                        <img src="../public/assets/photography/IMG_5084.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 6">
+                        <img src="../public/assets/photography/IMG_1450.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 7">
+                        <img src="../public/assets/photography/IMG_1026.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 8">
+                        <img src="../public/assets/photography/NO_FUSION_0429_029.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 9">
+                        <img src="../public/assets/photography/IMG_1416.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 10">
+                        <img src="../public/assets/photography/IMG_0941.JPG" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 11">
+                        <img src="../public/assets/photography/IMG_0211.jpg" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 12">
+                        <img src="../public/assets/photography/NO_FUSION_0515_007.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 13">
+                        <img src="../public/assets/photography/IMG_4394_Original.jpg" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 14">
+                        <img src="../public/assets/photography/NO_FUSION_0517_007.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 15">
+                        <img src="../public/assets/photography/NO_FUSION_0503_003.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                    <button class="gallery__item" type="button" aria-label="View photograph 16">
+                        <img src="../public/assets/photography/NO_FUSION_0522_001.jpg?v=2" alt="Photograph by Viraj Kabbur" loading="lazy" decoding="async">
+                    </button>
+                </div>
             </div>
         </main>
 
         <footer class="footer">2026 @ Viraj Kabbur</footer>
     </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+        <button class="lightbox__btn lightbox__close" type="button" aria-label="Close viewer">×</button>
+        <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous image">‹</button>
+        <button class="lightbox__btn lightbox__next" type="button" aria-label="Next image">›</button>
+        <div class="lightbox__stage">
+            <img class="lightbox__img" src="" alt="">
+        </div>
+        <span class="lightbox__count" aria-live="polite"></span>
+    </div>
+
     <script src="../public/vendor/gsap.min.js"></script>
     <script src="../page-transition.js"></script>
+    <script src="photography.js"></script>
 </body>
 </html>
