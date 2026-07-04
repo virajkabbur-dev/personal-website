@@ -286,6 +286,9 @@ body.profession-page--text-reveal {
 
 .profession-projects__viewport {
   overflow: hidden;
+  width: 100%;
+  container-type: inline-size;
+  container-name: projects-carousel;
 }
 
 .profession-projects__track {
@@ -311,6 +314,8 @@ body.profession-page--text-reveal {
   background: linear-gradient(180deg, #fde8d4 0%, #f5c9a2 55%, #efbc8f 100%);
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
   will-change: opacity;
 }
 
@@ -337,6 +342,7 @@ body.profession-page--text-reveal {
   letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 .profession-project-card__tags {
@@ -470,7 +476,8 @@ body.profession-page--text-reveal {
 .profession-project-card__image-img {
   display: block;
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   min-height: clamp(180px, 28vw, 240px);
   object-fit: cover;
   object-position: top center;
@@ -491,6 +498,8 @@ body.profession-page--text-reveal {
   text-align: justify;
   hyphens: auto;
   margin-bottom: 24px;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .profession-project-card__btn {
@@ -628,6 +637,19 @@ body.profession-page--text-reveal {
   height: auto;
 }
 
+@container projects-carousel (max-width: 900px) {
+  .profession-project-card,
+  .profession-project-card--wide {
+    flex: 0 0 100cqw;
+    width: 100cqw;
+    max-width: 100cqw;
+  }
+
+  .profession-projects__track {
+    gap: 14px;
+  }
+}
+
 @media (max-width: 900px) {
   .profession-content {
     padding-top: clamp(64px, 9vh, 80px);
@@ -649,14 +671,6 @@ body.profession-page--text-reveal {
   .profession-design__card {
     order: 1;
     margin: 0 auto;
-  }
-
-  .profession-project-card {
-    flex-basis: min(380px, 90vw);
-  }
-
-  .profession-project-card--wide {
-    flex-basis: min(420px, 92vw);
   }
 }
 
@@ -686,13 +700,24 @@ body.profession-page--text-reveal {
   }
 
   .profession-project-card {
-    flex-basis: calc(100vw - var(--page-gutter) * 2 - 8px);
-    padding: clamp(20px, 5vw, 28px);
+    padding: clamp(18px, 4.5vw, 24px);
     border-radius: 18px;
   }
 
-  .profession-project-card--wide {
-    flex-basis: calc(100vw - var(--page-gutter) * 2 - 8px);
+  .profession-project-card__image {
+    min-height: unset;
+    margin-bottom: 16px;
+  }
+
+  .profession-project-card__image-img {
+    min-height: unset;
+    max-height: 200px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  [data-theme="dark"] .profession-project-card__image-img {
+    background: rgba(0, 0, 0, 0.15);
   }
 
   .profession-project-card__tags {
@@ -703,9 +728,13 @@ body.profession-page--text-reveal {
     margin-left: 0;
   }
 
-  .profession-project-card__image,
-  .profession-project-card__image-img {
-    min-height: clamp(140px, 40vw, 200px);
+  .profession-project-card__actions {
+    width: 100%;
+  }
+
+  .profession-project-card__btn {
+    flex: 1 1 auto;
+    text-align: center;
   }
 
   .profession-projects__btn {
