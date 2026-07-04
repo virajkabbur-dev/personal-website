@@ -506,6 +506,33 @@ body.profession-page--text-reveal {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.profession-project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.profession-project-card__btn--outline {
+  background: transparent;
+  border: 1.5px solid rgba(26, 26, 26, 0.25);
+  color: #1a1a1a;
+}
+
+.profession-project-card__btn--outline:hover {
+  border-color: rgba(26, 26, 26, 0.45);
+}
+
+[data-theme="dark"] .profession-project-card__btn--outline {
+  background: transparent;
+  border-color: rgba(242, 242, 244, 0.28);
+  color: #f2f2f4;
+}
+
+[data-theme="dark"] .profession-project-card__btn--outline:hover {
+  border-color: rgba(242, 242, 244, 0.5);
+}
+
 .profession-project-card__btn:hover {
   opacity: 0.85;
   transform: translateY(-1px);

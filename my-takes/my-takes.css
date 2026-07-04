@@ -459,6 +459,27 @@ body.my-takes-page {
   .my-takes-page .section {
     padding-bottom: calc(100px + var(--safe-bottom));
   }
+
+  .takes__card,
+  .takes__cta {
+    grid-template-columns: 1fr;
+  }
+
+  .takes__card-cover,
+  .takes__cta-media {
+    display: block;
+    aspect-ratio: 16 / 9;
+    min-height: auto;
+  }
+
+  .takes__card-cover img,
+  .takes__cta-media img {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 600px) {
@@ -469,18 +490,6 @@ body.my-takes-page {
 
   .takes {
     gap: 40px;
-    --takes-thumb: 1fr;
-  }
-
-  .takes__card,
-  .takes__cta {
-    grid-template-columns: 1fr;
-  }
-
-  .takes__card-cover,
-  .takes__cta-media {
-    aspect-ratio: 16 / 9;
-    min-height: auto;
   }
 
   .takes__card-body {
