@@ -14,6 +14,10 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
+  --chrome-glass-bg: rgba(255, 255, 255, 0.42);
+  --chrome-glass-border: rgba(0, 0, 0, 0.04);
+  --chrome-glass-blur: 12px;
+  --chrome-bar-height: 56px;
 }
 
 [data-theme="dark"] {
@@ -25,6 +29,8 @@
   --text-footer: rgba(242, 242, 244, 0.38);
   --border: #2a2a32;
   --icon-filter: invert(1) brightness(1.15);
+  --chrome-glass-bg: rgba(18, 18, 22, 0.55);
+  --chrome-glass-border: rgba(255, 255, 255, 0.06);
 }
 
 *,
@@ -65,11 +71,43 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
-  padding: calc(36px + var(--safe-top)) 0 36px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--chrome-bar-height) + var(--safe-top));
+  padding: var(--safe-top) 0 0;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: var(--chrome-glass-bg);
+  backdrop-filter: blur(var(--chrome-glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--chrome-glass-blur)) saturate(160%);
+  border-bottom: 1px solid transparent;
+  transition:
+    opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.nav.chrome-glass--active::before {
+  opacity: 1;
+  border-bottom-color: var(--chrome-glass-border);
+}
+
+/* Home page — slight top offset, internal layout unchanged */
+body:not(.section-page) .nav {
+  top: 10px;
 }
 
 .nav__inner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 calc(var(--page-gutter) + var(--safe-left)) 0 calc(var(--page-gutter) + var(--safe-right));
@@ -243,17 +281,6 @@ body {
 .section__title--passion { color: #f39852; }
 .section__title--about-me { color: var(--text); }
 
-.about-me__content p {
-  font-size: clamp(15px, 1.6vw, 17px);
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.about-me__content p:last-child {
-  margin-bottom: 0;
-}
-
 .section__intro {
   font-size: clamp(15px, 1.6vw, 18px);
   font-weight: 400;
@@ -336,15 +363,44 @@ body {
 
 .page-toolbar {
   position: fixed;
-  top: calc(36px + var(--safe-top));
-  right: calc(var(--page-gutter) + var(--safe-right));
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 110;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
+  min-height: calc(var(--chrome-bar-height) + var(--safe-top));
+  padding: var(--safe-top) calc(var(--page-gutter) + var(--safe-right)) 0 calc(var(--page-gutter) + var(--safe-left));
+  box-sizing: border-box;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.page-toolbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: var(--chrome-glass-bg);
+  backdrop-filter: blur(var(--chrome-glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--chrome-glass-blur)) saturate(160%);
+  border-bottom: 1px solid transparent;
+  transition:
+    opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.page-toolbar.chrome-glass--active::before {
+  opacity: 1;
+  border-bottom-color: var(--chrome-glass-border);
 }
 
 .page-toolbar__btn {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -373,6 +429,25 @@ html.page-enter-pending .page,
 html.page-enter-pending .page-toolbar,
 html.page-enter-pending .notes {
   opacity: 0;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav.chrome-glass--active::before,
+  .page-toolbar.chrome-glass--active::before {
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  [data-theme="dark"] .nav.chrome-glass--active::before,
+  [data-theme="dark"] .page-toolbar.chrome-glass--active::before {
+    background: rgba(18, 18, 22, 0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav::before,
+  .page-toolbar::before {
+    transition: none;
+  }
 }
 
 /* Responsive — laptop / tablet */
@@ -470,8 +545,8 @@ html.page-enter-pending .notes {
 }
 
 @media (max-width: 600px) {
-  .nav {
-    padding: calc(24px + var(--safe-top)) 0 24px;
+  :root {
+    --chrome-bar-height: 52px;
   }
 
   .nav__inner {
@@ -492,7 +567,6 @@ html.page-enter-pending .notes {
   }
 
   .page-toolbar {
-    top: calc(24px + var(--safe-top));
     gap: 12px;
   }
 

@@ -1,0 +1,314 @@
+/* About Me — editorial portrait layout */
+
+body.about-me-page {
+  overflow-x: hidden;
+}
+
+.about-me-page .section {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-bottom: calc(100px + var(--safe-bottom));
+}
+
+.about-me-page .section__content {
+  border-top: none;
+  padding-top: 0;
+}
+
+.about-me-page .footer {
+  position: relative;
+  bottom: auto;
+  padding: 8px 0 calc(36px + var(--safe-bottom));
+}
+
+/* Hero — photo + intro */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 5vh, 52px);
+}
+
+.about-me__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+}
+
+.about-me__photo-wrap {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 340px);
+}
+
+.about-me__photo-ring {
+  position: absolute;
+  inset: -12px -16px -16px -12px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(58, 187, 179, 0.22), rgba(133, 95, 129, 0.18) 45%, rgba(243, 152, 82, 0.2));
+  transform: rotate(-4deg);
+  z-index: 0;
+}
+
+.about-me__photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+  border: 3px solid var(--bg);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.04),
+    0 20px 48px rgba(0, 0, 0, 0.1);
+  transform: rotate(2deg);
+}
+
+[data-theme="dark"] .about-me__photo {
+  border-color: var(--bg);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+.about-me__photo-note {
+  position: absolute;
+  z-index: 2;
+  bottom: -14px;
+  right: -10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fff9c4;
+  font-family: 'Freeman', cursive;
+  font-size: 15px;
+  color: #3a3a3a;
+  line-height: 1.2;
+  transform: rotate(6deg);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.12);
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.06));
+}
+
+[data-theme="dark"] .about-me__photo-note {
+  background: #3d3a28;
+  color: #f2e9a8;
+}
+
+.about-me__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-me__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.about-me__title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.about-me__name {
+  white-space: nowrap;
+}
+
+.about-me__title em {
+  font-style: normal;
+  background: linear-gradient(90deg, #3abbb3, #855f81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-me__lead {
+  font-size: clamp(16px, 1.8vw, 19px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 38ch;
+}
+
+/* Role chips */
+.about-me__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-me__role {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.about-me__role--pm {
+  color: #5c4578;
+  background: rgba(133, 95, 129, 0.14);
+}
+
+.about-me__role--tech {
+  color: #2a6b67;
+  background: rgba(58, 187, 179, 0.14);
+}
+
+.about-me__role--photo {
+  color: #2a6a8a;
+  background: rgba(83, 194, 238, 0.14);
+}
+
+.about-me__role--ride {
+  color: #8a5a2a;
+  background: rgba(243, 152, 82, 0.16);
+}
+
+.about-me__role--write {
+  color: #3a5a8a;
+  background: rgba(83, 130, 200, 0.12);
+}
+
+[data-theme="dark"] .about-me__role--pm { color: #d4c0e8; background: rgba(133, 95, 129, 0.22); }
+[data-theme="dark"] .about-me__role--tech { color: #8ee0db; background: rgba(58, 187, 179, 0.18); }
+[data-theme="dark"] .about-me__role--photo { color: #9ed4f5; background: rgba(83, 194, 238, 0.18); }
+[data-theme="dark"] .about-me__role--ride { color: #f5c99a; background: rgba(243, 152, 82, 0.2); }
+[data-theme="dark"] .about-me__role--write { color: #9ec4f0; background: rgba(83, 130, 200, 0.18); }
+
+/* Story blocks */
+.about-me__story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.about-me__card {
+  padding: clamp(22px, 3vw, 28px);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-me__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .about-me__card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.about-me__card--accent {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(58, 187, 179, 0.06) 0%, rgba(133, 95, 129, 0.06) 100%);
+  border-color: rgba(133, 95, 129, 0.15);
+}
+
+[data-theme="dark"] .about-me__card--accent {
+  background: linear-gradient(135deg, rgba(58, 187, 179, 0.08) 0%, rgba(133, 95, 129, 0.1) 100%);
+  border-color: rgba(133, 95, 129, 0.25);
+}
+
+.about-me__card-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.about-me__card p {
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.about-me__card--accent p {
+  font-size: clamp(15px, 1.6vw, 17px);
+  color: var(--text);
+}
+
+.about-me__card p strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Entrance */
+.about-me__hero,
+.about-me__roles,
+.about-me__story {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: about-me-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.about-me__roles { animation-delay: 0.1s; }
+.about-me__story { animation-delay: 0.2s; }
+
+@keyframes about-me-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-me-page .section {
+    padding-top: calc(96px + var(--safe-top));
+  }
+
+  .about-me__hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-me__photo-wrap {
+    width: min(72vw, 280px);
+  }
+
+  .about-me__intro {
+    text-align: center;
+    align-items: center;
+  }
+
+  .about-me__name {
+    white-space: normal;
+  }
+
+  .about-me__lead {
+    max-width: none;
+  }
+
+  .about-me__roles {
+    justify-content: center;
+  }
+
+  .about-me__story {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-me__hero,
+  .about-me__roles,
+  .about-me__story,
+  .about-me__card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

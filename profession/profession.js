@@ -39,6 +39,12 @@
       },
     });
 
+    const lenis = locoScroll.lenisInstance;
+    if (lenis && typeof window.registerChromeGlassScroll === 'function') {
+      window.registerChromeGlassScroll(() => lenis.scroll);
+      lenis.on('scroll', window.updateChromeGlass);
+    }
+
     resizeHandler = () => {
       locoScroll?.resize();
     };
@@ -389,13 +395,28 @@
   }
 
   function getCornerPosition() {
+    let left = 64;
+    let fontSize = 17;
+
     if (window.matchMedia('(max-width: 600px)').matches) {
-      return { left: 24, top: 24, fontSize: 15 };
+      left = 24;
+      fontSize = 15;
+    } else if (window.matchMedia('(max-width: 900px)').matches) {
+      left = 40;
+      fontSize = 16;
     }
-    if (window.matchMedia('(max-width: 900px)').matches) {
-      return { left: 40, top: 28, fontSize: 16 };
+
+    const toolbar = document.querySelector('.page-toolbar');
+    const endScale = fontSize / getCenterFontSize();
+    let top = 16;
+
+    if (toolbar && typewriter) {
+      const bar = toolbar.getBoundingClientRect();
+      const scaledH = typewriter.getBoundingClientRect().height * endScale;
+      top = bar.top + (bar.height - scaledH) / 2;
     }
-    return { left: 64, top: 36, fontSize: 17 };
+
+    return { left, top, fontSize };
   }
 
   function getCenterFontSize() {
@@ -621,4 +642,9 @@
     lockScroll();
     runAnimation();
   }
+
+  window.addEventListener('resize', () => {
+    if (!body.classList.contains('profession-page--ready') || !typewriter) return;
+    gsap.set(typewriter, getCornerTweenValues());
+  });
 })();

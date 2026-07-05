@@ -37,7 +37,7 @@ html:has(body.profession-page)::-webkit-scrollbar-thumb:hover {
 body.profession-page {
   overflow-x: hidden;
   --profession-section-gap: clamp(100px, 14vh, 160px);
-  --profession-page-top: clamp(72px, 10vh, 96px);
+  --profession-page-top: clamp(48px, 6vh, 64px);
 }
 
 html:has(body.profession-page--animating),
@@ -87,7 +87,7 @@ body.profession-page--text-reveal {
 .profession-intro {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 120;
   pointer-events: none;
 }
 
@@ -156,7 +156,7 @@ body.profession-page--text-reveal {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(32px, 5vh, 56px) 0;
+  padding: clamp(20px, 3vh, 40px) 0;
 }
 
 .profession-content__diagram {
@@ -182,7 +182,8 @@ body.profession-page--text-reveal {
 }
 
 .profession-reveal__pin {
-  padding: var(--profession-section-gap) var(--page-gutter) 0;
+  /* Horizontal inset comes from `.page`; only top spacing here. */
+  padding: var(--profession-section-gap) 0 0;
 }
 
 .profession-reveal > .profession-projects {
@@ -230,7 +231,9 @@ body.profession-page--text-reveal {
   right: 0;
   z-index: 5;
   background: var(--bg);
-  padding: var(--profession-section-gap) var(--page-gutter) 0;
+  /* Match `.page` horizontal inset so text doesn't shift when unlock removes fixed positioning. */
+  padding: var(--profession-section-gap) calc(var(--page-gutter) + var(--safe-left)) 0
+    calc(var(--page-gutter) + var(--safe-right));
 }
 
 .profession-reveal__placeholder {
@@ -652,7 +655,7 @@ body.profession-page--text-reveal {
 
 @media (max-width: 900px) {
   .profession-content {
-    padding-top: clamp(64px, 9vh, 80px);
+    padding-top: clamp(40px, 5vh, 52px);
   }
 
   .profession-reveal__pin--locked {
@@ -685,7 +688,7 @@ body.profession-page--text-reveal {
   }
 
   .profession-content {
-    padding: clamp(56px, 8vh, 72px) var(--page-gutter) 0;
+    padding: clamp(40px, 5vh, 48px) var(--page-gutter) 0;
   }
 
   .profession-content__diagram {

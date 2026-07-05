@@ -7,9 +7,11 @@
     <title>About Me — Viraj Kabbur</title>
     <script src="../page-transition-pending.js"></script>
     <script src="../theme.js"></script>
+    <script src="../chrome-glass.js"></script>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="about-me.css">
 </head>
-<body class="section-page" data-page-transition="enter exit">
+<body class="about-me-page section-page" data-page-transition="enter exit">
     <aside class="page-toolbar" aria-label="Page actions">
         <button
             type="button"
@@ -56,18 +58,64 @@
         </header>
 
         <main class="section">
-            <h1 class="section__title section__title--about-me">About Me</h1>
-            <p class="section__intro">Hey! I'm Viraj Kabbur — a product manager, tech enthusiast, and creative at heart.</p>
-            <div class="section__content about-me__content">
-                <p>
-                    I'm an avid tech enthusiast, blog writer, motorbiker, and photographer based in Pune, India 🇮🇳.
-                    I love building products that sit at the intersection of technology, business, and design.
-                </p>
-                <p>
-                    When I'm not thinking about product strategy, you'll find me on two wheels, behind a camera,
-                    or writing about the things that fascinate me. This site is a collection of my work, thoughts,
-                    and passions — welcome!
-                </p>
+            <div class="section__content">
+                <article class="about-me">
+
+                    <div class="about-me__hero">
+                        <div class="about-me__photo-wrap">
+                            <div class="about-me__photo-ring" aria-hidden="true"></div>
+                            <img
+                                class="about-me__photo"
+                                src="../public/assets/my-photo.jpg"
+                                alt="Viraj Kabbur"
+                            >
+                            <span class="about-me__photo-note">Pune, India 🇮🇳</span>
+                        </div>
+
+                        <div class="about-me__intro">
+                            <span class="about-me__eyebrow">About Me</span>
+                            <h1 class="about-me__title">Hey! I'm <span class="about-me__name"><em>Viraj</em> Kabbur</span></h1>
+                            <p class="about-me__lead">
+                                Product manager, tech enthusiast, and creative at heart —
+                                building at the intersection of technology, business, and design.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-me__roles" aria-label="What I do">
+                        <span class="about-me__role about-me__role--pm">Product Manager</span>
+                        <span class="about-me__role about-me__role--tech">Tech Enthusiast</span>
+                        <span class="about-me__role about-me__role--photo">Photographer</span>
+                        <span class="about-me__role about-me__role--ride">Motorbiker</span>
+                        <span class="about-me__role about-me__role--write">Blog Writer</span>
+                    </div>
+
+                    <div class="about-me__story">
+                        <div class="about-me__card">
+                            <span class="about-me__card-label">The work</span>
+                            <p>
+                                I love building products that sit at the <strong>intersection of tech, business, and design</strong>.
+                                From mindmaps to deployed apps — I take ideas all the way through.
+                            </p>
+                        </div>
+                        <div class="about-me__card">
+                            <span class="about-me__card-label">Off the clock</span>
+                            <p>
+                                When I'm not thinking about product strategy, you'll find me on
+                                <strong>two wheels</strong>, behind a <strong>camera</strong>, or writing about
+                                the things that fascinate me.
+                            </p>
+                        </div>
+                        <div class="about-me__card about-me__card--accent">
+                            <span class="about-me__card-label">This site</span>
+                            <p>
+                                A collection of my work, thoughts, and passions — profession, photography,
+                                writing, and everything in between. Glad you're here. Welcome!
+                            </p>
+                        </div>
+                    </div>
+
+                </article>
             </div>
         </main>
 
