@@ -93,7 +93,7 @@ body.profession-page--text-reveal {
 
 .profession-intro__text {
   width: max-content;
-  max-width: calc(100vw - 48px);
+  max-width: calc(100vw - 2 * var(--page-gutter) - var(--safe-left) - var(--safe-right));
   font-size: clamp(42px, 6.5vw, 64px);
   font-weight: 500;
   line-height: 1.15;
@@ -684,7 +684,7 @@ body.profession-page--text-reveal {
 
   .profession-intro__text {
     font-size: clamp(32px, 9vw, 42px);
-    max-width: calc(100vw - 32px);
+    max-width: calc(100vw - 2 * var(--page-gutter) - var(--safe-left) - var(--safe-right));
   }
 
   .profession-content {

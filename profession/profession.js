@@ -394,29 +394,35 @@
     onPageReady();
   }
 
+  function getToolbarMetrics() {
+    const toolbar = document.querySelector('.page-toolbar');
+    if (!toolbar) {
+      return { paddingLeft: 64, paddingTop: 0, barHeight: 56 };
+    }
+
+    const styles = getComputedStyle(toolbar);
+    const paddingLeft = parseFloat(styles.paddingLeft) || 64;
+    const paddingTop = parseFloat(styles.paddingTop) || 0;
+    const barHeight = (parseFloat(styles.minHeight) || paddingTop + 56) - paddingTop;
+
+    return { paddingLeft, paddingTop, barHeight };
+  }
+
   function getCornerPosition() {
-    let left = 64;
+    const { paddingLeft, paddingTop, barHeight } = getToolbarMetrics();
     let fontSize = 17;
 
     if (window.matchMedia('(max-width: 600px)').matches) {
-      left = 24;
       fontSize = 15;
     } else if (window.matchMedia('(max-width: 900px)').matches) {
-      left = 40;
       fontSize = 16;
     }
 
-    const toolbar = document.querySelector('.page-toolbar');
     const endScale = fontSize / getCenterFontSize();
-    let top = 16;
+    const scaledH = typewriter.getBoundingClientRect().height * endScale;
+    const top = paddingTop + (barHeight - scaledH) / 2;
 
-    if (toolbar && typewriter) {
-      const bar = toolbar.getBoundingClientRect();
-      const scaledH = typewriter.getBoundingClientRect().height * endScale;
-      top = bar.top + (bar.height - scaledH) / 2;
-    }
-
-    return { left, top, fontSize };
+    return { left: paddingLeft, top, fontSize };
   }
 
   function getCenterFontSize() {
@@ -487,6 +493,24 @@
     };
   }
 
+  function applyCornerPosition() {
+    const corner = getCornerPosition();
+    const endScale = corner.fontSize / getCenterFontSize();
+
+    gsap.set(typewriter, {
+      position: 'fixed',
+      left: corner.left,
+      top: corner.top,
+      x: 0,
+      y: 0,
+      xPercent: 0,
+      yPercent: 0,
+      scale: endScale,
+      fontWeight: 500,
+      transformOrigin: 'left top',
+    });
+  }
+
   function setCentered() {
     gsap.set(typewriter, {
       position: 'fixed',
@@ -524,9 +548,8 @@
 
   function showFinalState() {
     const { all: chars } = buildTypewriterDOM();
-    setCentered();
+    applyCornerPosition();
     gsap.set(chars, { opacity: 1, y: 0 });
-    gsap.set(typewriter, getCornerTweenValues());
 
     body.classList.add('profession-page--ready');
     gsap.set(content, { autoAlpha: 1, y: 0, visibility: 'visible' });
@@ -556,6 +579,7 @@
     if (body.classList.contains('profession-page--ready')) {
       gsap.set(content, { autoAlpha: 1, visibility: 'visible' });
       if (page) gsap.set(page, { opacity: 1 });
+      applyCornerPosition();
       locoScroll?.lenisInstance?.start();
       locoScroll?.resize();
       return;
@@ -610,6 +634,8 @@
       scale: () => getCornerTweenValues().scale,
     });
 
+    tl.add(() => applyCornerPosition());
+
     tl.to(
       content,
       {
@@ -645,6 +671,6 @@
 
   window.addEventListener('resize', () => {
     if (!body.classList.contains('profession-page--ready') || !typewriter) return;
-    gsap.set(typewriter, getCornerTweenValues());
+    applyCornerPosition();
   });
 })();
