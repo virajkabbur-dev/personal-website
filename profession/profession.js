@@ -403,9 +403,16 @@
     const styles = getComputedStyle(toolbar);
     const paddingLeft = parseFloat(styles.paddingLeft) || 64;
     const paddingTop = parseFloat(styles.paddingTop) || 0;
-    const barHeight = (parseFloat(styles.minHeight) || paddingTop + 56) - paddingTop;
+    const barHeight = toolbar.clientHeight - paddingTop;
 
     return { paddingLeft, paddingTop, barHeight };
+  }
+
+  function getTypewriterScaledSize(endScale) {
+    return {
+      width: typewriter.offsetWidth * endScale,
+      height: typewriter.offsetHeight * endScale,
+    };
   }
 
   function getCornerPosition() {
@@ -419,8 +426,14 @@
     }
 
     const endScale = fontSize / getCenterFontSize();
-    const scaledH = typewriter.getBoundingClientRect().height * endScale;
-    const top = paddingTop + (barHeight - scaledH) / 2;
+    const { height: scaledH } = getTypewriterScaledSize(endScale);
+    let top = paddingTop + (barHeight - scaledH) / 2;
+
+    const toolbarBtn = document.querySelector('.page-toolbar__btn--home, .page-toolbar__btn--theme');
+    if (toolbarBtn && typewriter.offsetHeight) {
+      const btnRect = toolbarBtn.getBoundingClientRect();
+      top = btnRect.top + (btnRect.height - scaledH) / 2;
+    }
 
     return { left: paddingLeft, top, fontSize };
   }
@@ -530,9 +543,8 @@
   function getCornerTweenValues() {
     const corner = getCornerPosition();
     const endScale = corner.fontSize / getCenterFontSize();
+    const { width: scaledW, height: scaledH } = getTypewriterScaledSize(endScale);
     const rect = typewriter.getBoundingClientRect();
-    const scaledW = rect.width * endScale;
-    const scaledH = rect.height * endScale;
     const targetCenterX = corner.left + scaledW / 2;
     const targetCenterY = corner.top + scaledH / 2;
     const currentCenterX = rect.left + rect.width / 2;
