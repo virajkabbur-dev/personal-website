@@ -735,8 +735,14 @@ body.profession-page--text-reveal {
     width: 100%;
   }
 
-  .profession-project-card__btn {
+  .profession-project-card__actions .profession-project-card__btn {
     flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .profession-project-card > .profession-project-card__btn {
+    width: 100%;
+    flex: 0 0 auto;
     text-align: center;
   }
 

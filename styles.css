@@ -494,7 +494,7 @@ html.page-enter-pending .notes {
 /* Tablet — stack sticky notes below hero */
 @media (max-width: 768px) {
   .landing {
-    padding: calc(88px + var(--safe-top)) 0 calc(100px + var(--safe-bottom));
+    padding: calc(116px + var(--safe-top)) 0 calc(100px + var(--safe-bottom));
     flex-direction: column;
     justify-content: flex-start;
     min-height: 100svh;
@@ -590,6 +590,10 @@ html.page-enter-pending .notes {
 
   .section__content {
     padding-top: 24px;
+  }
+
+  .landing {
+    padding-top: calc(128px + var(--safe-top));
   }
 }
 
