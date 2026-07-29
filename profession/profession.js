@@ -685,4 +685,19 @@
     if (!body.classList.contains('profession-page--ready') || !typewriter) return;
     applyCornerPosition();
   });
+
+  (function initFigmaComingSoon() {
+    const card = document.getElementById('professionFigmaCard');
+    if (!card) return;
+
+    let hideTimer = null;
+
+    card.addEventListener('click', () => {
+      card.classList.add('is-soon-visible');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        card.classList.remove('is-soon-visible');
+      }, 2600);
+    });
+  })();
 })();
